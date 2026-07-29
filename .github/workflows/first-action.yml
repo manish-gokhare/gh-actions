@@ -6,6 +6,8 @@ jobs:
     steps:
       - name: Print greeting
         run: echo "Hello GitAction"
-      - name: Pring goodbye
-        run: echo "Done Good Bye"
+      - name: Pring GoodBye
+        run: |
+          echo "Well Done!"
+          echo "Good Bye"
   
