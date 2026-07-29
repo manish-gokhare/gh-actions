@@ -1,0 +1,11 @@
+name: First workflow
+on: workflow_dispatch
+jobs:
+  first-job:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Print greeting
+        run: echo "Hello GitAction"
+      - name: Pring goodbye
+        run: echo "Done Good Bye"
+  
