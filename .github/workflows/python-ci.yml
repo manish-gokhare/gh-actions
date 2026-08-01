@@ -43,7 +43,7 @@ jobs:
         run: |
             python -c "import os; print(os.getcwd())" 
             python -c "import sys; print(sys.path)"
-            
+
       - name: Try importing app
         run: |
             python -c "import app; print('Import successful')"
@@ -51,3 +51,15 @@ jobs:
       - name: Run unit test
         run: |
           pytest -v
+
+      - name: Build Python Package
+        run: |
+          python -m build
+          
+      - name: Store Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-package-distributions
+          path: dist/
+          retention-days: 2
+
