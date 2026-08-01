@@ -62,4 +62,40 @@ jobs:
           name: python-package-distributions
           path: dist/
           retention-days: 2
+  use-artifacts:
+    needs: build-test
+    runs-on: ubuntu-latest
+
+    steps:
+      # Download the artifact using the exact same name it was uploaded with
+      - name: Download Python Package Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: python-package-distributions
+          path: dist/
+          
+      - name: Verify Downloaded Files
+        run: |
+          echo "Files downloaded from the previous job:"
+          ls -la dist/
+
+      # Optional: Actually install the downloaded package to prove it works
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install and test the built package
+        run: |
+          # Create a virtual environment (optional but good practice)
+          python -m venv venv
+          source venv/bin/activate
+          
+          # Install the wheel file (.whl) created in the previous job
+          pip install dist/*.whl
+          
+          # Verify we can import the app globally now
+          python -c "import app; print('Successfully installed and imported the artifact!')"
+
+
 
