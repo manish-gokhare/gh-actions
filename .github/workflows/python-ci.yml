@@ -41,8 +41,8 @@ jobs:
             find . -maxdepth 3 -type f
       - name: Show Python path
         run: |
-            python -c "import os", 
-            python -c "import sys"; 
+            python -c "import os"
+            python -c "import sys"
             python -c "print(os.getcwd())" 
             python -c "print(sys.path)"
             python -c "import app"
