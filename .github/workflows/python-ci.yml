@@ -39,14 +39,11 @@ jobs:
             pwd
             ls -la
             find . -maxdepth 3 -type f
-      - name: Show Python path
+      - name: Test Python import
         run: |
-            python -c "import os"
-            python -c "import sys"
-            python -c "print(os.getcwd())" 
-            python -c "print(sys.path)"
-            python -c "import app"
-
+            python -c "import os; print(os.getcwd())" 
+            python -c "import sys; print(sys.path)"
+            
       - name: Try importing app
         run: |
             python -c "import app; print('Import successful')"
