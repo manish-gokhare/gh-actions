@@ -33,6 +33,19 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest
           pip install build
+      - name: Show workspace
+        run: |
+            echo "Workspace: $GITHUB_WORKSPACE"
+            pwd
+            ls -la
+            find . -maxdepth 3 -type f
+      - name: Show Python path
+        run: |
+            python -c "import os, sys; print('CWD:', os.getcwd()); print('\n'.join(sys.path))"
+
+      - name: Try importing app
+        run: |
+            python -c "import app; print('Import successful')"
     
       - name: Run unit test
         run: |
