@@ -27,3 +27,9 @@ jobs:
         run: |
           python --version
           pip --version
+    
+      - name: Install Dependencies
+        run: |
+          python -m pip intstall upgrade pip
+          pip install pytest
+          pip install build
