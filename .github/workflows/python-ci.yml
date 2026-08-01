@@ -1,0 +1,29 @@
+name: Python CI Build
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+      - main
+
+jobs:
+
+  build-test:
+
+    runs-on: ubuntu-22.04
+
+    steps:
+
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify Python Version
+        run: |
+          python --version
+          pip --version
