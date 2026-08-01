@@ -4,10 +4,10 @@ jobs:
   first-job:
     runs-on: ubuntu-22.04
     steps:
-      - name: Print greeting
+      - name: print hello message
         run: echo "Hello GitAction"
-      - name: Pring GoodBye
+      - name: print goodbye message
         run: |
           echo "Well Done!"
-          echo "Good Bye"
+          echo "Good Bye Github Actions"
   
